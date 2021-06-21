@@ -1,0 +1,7 @@
+.idea
+rabbit-mq-poc.iml
+build-fe.sh
+rabbitmq/data
+rabbitmq/logs
+rabbit-mq-poc
+
