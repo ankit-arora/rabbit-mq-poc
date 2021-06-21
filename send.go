@@ -12,7 +12,7 @@ import (
 
 func main() {
 	// Create a new RabbitMQ connection.
-	connection, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	connection, err := amqp.Dial("amqp://ops0:ops0@localhost:5672/")
 	failOnError(err, "Failed to connect to RabbitMQ")
 	defer connection.Close()
 	// Let's start by opening a channel to our RabbitMQ
@@ -23,11 +23,11 @@ func main() {
 	defer channel.Close()
 	q, err := channel.QueueDeclare(
 		"mytest", // name
-		true,   // durable
-		false,   // delete when unused
-		false,   // exclusive
-		false,   // no-wait
-		nil,     // arguments
+		true,     // durable
+		false,    // delete when unused
+		false,    // exclusive
+		false,    // no-wait
+		nil,      // arguments
 	)
 	failOnError(err, "Failed to declare a queue")
 
@@ -37,7 +37,7 @@ func main() {
 		q.Name, // routing key
 		false,  // mandatory
 		false,  // immediate
-		amqp.Publishing {
+		amqp.Publishing{
 			ContentType: "text/plain",
 			Body:        []byte(body),
 		})
@@ -50,4 +50,3 @@ func failOnError(err error, msg string) {
 		log.Fatalf("%s: %s", msg, err)
 	}
 }
-

@@ -34,7 +34,7 @@
       "user": "ops0",
       "vhost": "/",
       "configure": ".*",
-      "write": "mytest",
+      "write": "^(mytest.*|amq\\.default)",
       "read": ".*"
     },
     {
@@ -42,7 +42,7 @@
       "vhost": "/",
       "configure": ".*",
       "write": "",
-      "read": "mytest"
+      "read": "^(mytest.*|amq\\.default)"
     }
   ],
   "topic_permissions": [
